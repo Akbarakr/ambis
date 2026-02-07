@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: 'DM Sans', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+
+  /* Vibrant Yellow, Orange, White, and Black Palette */
+  --background: 0 0% 100%;      /* White */
+  --foreground: 0 0% 0%;        /* Black */
+  
+  --primary: 45 100% 50%;       /* Vibrant Yellow */
+  --primary-foreground: 0 0% 0%;
+  
+  --secondary: 25 100% 50%;      /* Vibrant Orange */
+  --secondary-foreground: 0 0% 100%;
+  
+  --muted: 45 100% 95%;
+  --muted-foreground: 0 0% 40%;
+  
+  --accent: 25 100% 90%;
+  --accent-foreground: 25 100% 30%;
+  
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
+  
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+  --ring: 45 100% 50%;
+  
+  --radius: 0.75rem;
+}
+
+.dark {
+  /* Dark mode palette - Deep Purple + Light Accents */
+  --background: 270 50% 5%;
+  --foreground: 270 10% 98%;
+  
+  --primary: 270 70% 60%;
+  --primary-foreground: 0 0% 100%;
+  
+  --secondary: 270 30% 15%;
+  --secondary-foreground: 270 10% 98%;
+  
+  --muted: 270 30% 15%;
+  --muted-foreground: 270 10% 65%;
+  
+  --accent: 270 40% 20%;
+  --accent-foreground: 270 10% 98%;
+  
+  --destructive: 0 62% 30%;
+  --destructive-foreground: 270 10% 98%;
+  
+  --border: 270 30% 20%;
+  --input: 270 30% 20%;
+  --ring: 270 70% 60%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary;
+    font-family: var(--font-sans);
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply font-bold tracking-tight text-foreground;
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/20 rounded-full hover:bg-muted-foreground/40 transition-colors;
+}
+
+/* Glassmorphism utilities */
+.glass {
+  @apply bg-background/80 backdrop-blur-md border border-white/20 shadow-lg;
+}
+
+.glass-card {
+  @apply bg-card/50 backdrop-blur-sm border border-border/50 shadow-sm hover:shadow-md transition-all duration-300;
+}
